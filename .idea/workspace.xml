@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="46cf6118-b540-40b2-93f2-95f743f892d6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+    <list default="true" id="46cf6118-b540-40b2-93f2-95f743f892d6" name="Changes" comment="Updated InfixPostfix">
+      <change afterPath="$PROJECT_DIR$/src/Combination.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/QueueStack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/StackADT_old.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TestString.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/infixtest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InfixPostfix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InfixPostfix.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/QueueADT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/QueueADT.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/StackADT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StackADT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infixPostfix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InfixPostfix.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +27,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -34,15 +40,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.InfixPostfix">
     <configuration name="InfixPostfix" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="InfixPostfix" />
@@ -58,8 +64,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StackADT" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="StackADT (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="StackADT" />
+      <module name="assignment3" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test" />
+      <module name="assignment3" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="infixtest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="infixtest" />
       <module name="assignment3" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -69,7 +89,9 @@
       <list>
         <item itemvalue="Application.InfixPostfix" />
         <item itemvalue="Application.QueueADT" />
-        <item itemvalue="Application.StackADT" />
+        <item itemvalue="Application.infixtest" />
+        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.StackADT (3)" />
       </list>
     </recent_temporary>
   </component>
@@ -82,6 +104,14 @@
       <option name="presentableId" value="Default" />
       <updated>1659243477437</updated>
     </task>
+    <task id="LOCAL-00001" summary="Updated InfixPostfix">
+      <created>1659267965761</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1659267965761</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -97,5 +127,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Updated InfixPostfix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated InfixPostfix" />
   </component>
 </project>

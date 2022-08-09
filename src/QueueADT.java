@@ -1,101 +1,83 @@
 public class QueueADT
 {
-    private String[] values;
-    private int size;
-    private int first;
-    private int last;
+    private StackADT stk1 = new StackADT();
+    private StackADT stk2 = new StackADT();
 
     public QueueADT()
     {
-        values = new String[10];
-        size = 0;
-        first = 0;
-        last = 0;
     }
 
-    public void enqueue(String value)
+    public void enqueue(char data)
     {
-        if (size < values.length)
+        while (!isEmpty())
         {
-            values[last] = value;
-            last++;
-            last %= values.length;
-            size++;
+            stk2.push(stk1.pop());
         }
-        else
-            System.out.println("Queue limit reached! Ignoring!");
+
+        stk1.push(data);
+
+        while (!stk2.isEmpty())
+        {
+            stk1.push(stk2.pop());
+        }
     }
 
-    public void dequeue()
+    public char dequeue()
     {
-        if (size != 0)
+        char data = '\0';
+        if (!isEmpty())
         {
-            System.out.println("Value dequeued!");
-            values[first] = " ";
-            first++;
-            first %= values.length;
-            size--;
+            //System.out.println("Value dequeued!");
+            data = stk1.stackTop();
+            stk1.pop();
         }
         else
             System.out.println("Queue empty! Ignoring!");
+        return data;
     }
 
-    public void queueFront()
+    public char queueFront()
     {
-        if (size != 0)
-            System.out.println("First value is: " + values[first]);
+        if (!isEmpty());
+            //System.out.println("First value is: " + stk1.stackTop());
         else
             System.out.println("Queue empty! Ignoring!");
+        return stk1.stackTop();
     }
 
     public boolean isEmpty()
     {
-        return size == 0;
+        return stk1.isEmpty();
     }
 
     public void print()
     {
-        System.out.println("Collection currently contains: " + size + " elements");
-        if (values.length > 0)
+        System.out.println("Collection currently contains " + stk1.size + " elements");
+        if (!isEmpty())
         {
             System.out.print("Elements include: ");
-            for (int i = 0; i < values.length; i++)
-            {
-                System.out.print(values[i]);
-                if (i < values.length - 1)
-                    System.out.print(" ");
-                else
-                    System.out.println();
-            }
+            stk1.print();
         }
     }
 
-    public static void main(String args[])
+    public static void main(String[] args)
     {
         //record start time
         long startTime = System.nanoTime();
 
-        //create two new stacks and give them some data
-        StackADT stk1 = new StackADT();
-        stk1.push("3");
-        stk1.push("1");
-
-        StackADT stk2 = new StackADT();
-        stk2.push("4");
-        stk2.push("2");
-
-        //combine them in a queue, ensuring to pop the numbers after they are added to the queue
+        //create a new queue and give it some values
         QueueADT que = new QueueADT();
+        que.enqueue('1');
+        que.enqueue('2');
+        que.enqueue('3');
+        que.enqueue('4');
 
-        que.enqueue(stk1.stackTop());
-        stk1.pop();
-        que.enqueue(stk2.stackTop());
-        stk2.pop();
-        que.enqueue(stk1.stackTop());
-        stk1.pop();
-        que.enqueue(stk2.stackTop());
-        stk2.pop();
+        //print out the queue and display front value
+        que.print();
+        que.queueFront();
 
+        //remove value at front of queue
+        que.dequeue();
         que.print();
 
         //record end time and calculate run time

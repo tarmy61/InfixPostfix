@@ -1,122 +1,112 @@
 public class StackADT
 {
-    private String[] values;
-    private int size;
-
-    public StackADT()
+    private class StackNode
     {
-        values = new String[10];
-        size = 0;
-    }
+        char data;
+        StackNode next;
 
-    /*public StackADT(String[] values, int size)
-    {
-        this.values = values;
-        this.size = size;
-    }*/
-
-    //taken from 19.3
-    public void push(String value)
-    {
-        if (size < values.length)
-        {
-            size++;
-            values[values.length - size] = value;
-        }
-        else
-            System.out.println("Stack limit reached! Ignoring!");
-    }
-
-    //taken from 19.3
-    public void pop()
-    {
-        if (!isEmpty())
-        {
-            System.out.println("Value popped!");
-            values[values.length - size] = " ";
-            size--;
-        }
-        else
-            System.out.println("Stack empty! Ignoring!");
-    }
-
-    //taken from 19.3
-    public String stackTop()
-    {
-        if (!isEmpty())
-            System.out.println("Topmost value is: " + values[values.length - size]);
-        else
-            System.out.println("Stack empty! Ignoring!");
-        return values[values.length - size];
-    }
-
-    public boolean isEmpty()
-    {
-        return size == 0;
-    }
-
-    //taken from 19.3
-    public void print()
-    {
-        System.out.println("Collection currently contains: " + size + " elements");
-        if (!isEmpty()) //values.length > 0)
-        {
-            System.out.print("Elements include: ");
-            for (int i = 0; i < values.length; i++)
-            {
-                System.out.print(values[i]);
-                if (i < values.length - 1)
-                    System.out.print(" ");
-                else
-                    System.out.println();
-            }
-        }
-        //System.out.println("");
-    }
-
-    public static void main(String args[])
-    {
-        StackADT stk = new StackADT();
-        stk.push("12");
-        stk.push("14");
-        stk.print();
-        stk.stackTop();
-    }
-
-    //TBC
-    public static class StackNode
-    {
-        private String data;
-        private StackNode nextAddress;
-
-        public StackNode()
-        {
-        }
-
-        public StackNode(String data)
+        public StackNode(char data, StackNode next)
         {
             this.data = data;
-            nextAddress = null;
+            this.next = next;
         }
 
-        public String getData()
+        public char getData()
         {
             return data;
         }
 
         public StackNode getNext()
         {
-            return nextAddress;
+            return next;
         }
 
-        public void setData(String data)
+        public void setData(char data)
         {
             this.data = data;
         }
 
-        public void setNext(StackNode n)
+        public void setNext(StackNode next)
         {
-            nextAddress = n;
+            this.next = next;
         }
     }
+
+    StackNode root;
+    int size;
+
+    public StackADT()
+    {
+        root = null;
+        size = 0;
+    }
+
+    public void push(char data)
+    {
+        StackNode newNode = new StackNode(data, root);
+        root = newNode;
+        size++;
+    }
+
+    public char pop()
+    {
+        char data = '\0';
+        if (!isEmpty());
+        {
+            //System.out.println("Value popped!");
+            data = root.getData();
+            StackNode tmp = root;
+            root = root.getNext();
+            tmp.setNext(null);
+            size--;
+        }
+        return data;
+    }
+
+    public char stackTop()
+    {
+        char data = '\0';
+        if (!isEmpty())
+        {
+            data = root.getData();
+            //System.out.println("The topmost value is: " + data);
+        }
+        else
+            System.out.println("Stack empty! Ignoring!");
+        return data;
+    }
+
+    public boolean isEmpty()
+    {
+        return root == null;
+    }
+
+    public void print()
+    {
+        //System.out.println("The STACK currently contains " + size + " elements.");
+        StackNode temp = root;
+        if (root != null && root.data != '\0')
+        {
+            //System.out.println("These elements include:");
+            do
+            {
+                System.out.print(temp.data + " ");
+                temp = temp.next;
+            } while (temp != null);
+        }
+        System.out.println();
+    }
+
+    /*public static void main (String[] args)
+    {
+        StackADT stk = new StackADT();
+        stk.push("1");
+        stk.push("2");
+        stk.push("3");
+        stk.print();
+        stk.stackTop();
+        stk.pop();
+        stk.print();
+        stk.stackTop();
+    }*/
 }
