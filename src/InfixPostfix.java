@@ -109,8 +109,8 @@ public class InfixPostfix
         InfixPostfix ip = new InfixPostfix();
         ip.convertToPostfix("(6+2)*5-8/4+3*(9-1)/2^3");
         ip.convertToPostfix("2-5^5+9*3/1-6+(2*2)/4");
-        ip.convertToPostfix("(9)*8)*7/1/2-4-(2-3)-5^6");
-        ip.convertToPostfix("1+2*9*(4/1+5)//(2-8/3)-6");
+        //ip.convertToPostfix("(9)*8)*7/1/2-4-(2-3)-5^6");
+        //ip.convertToPostfix("1+2*9*(4/1+5)//(2-8/3)-6");
 
         //record end time and calculate run time
         long endTime = System.nanoTime();
