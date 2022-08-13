@@ -38,8 +38,10 @@ public class QueueADT
 
     public char queueFront()
     {
-        if (!isEmpty());
+        if (!isEmpty())
+        {
             //System.out.println("First value is: " + stk1.stackTop());
+        }
         else
             System.out.println("Queue empty! Ignoring!");
         return stk1.stackTop();

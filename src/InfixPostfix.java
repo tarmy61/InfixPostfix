@@ -8,12 +8,7 @@ public class InfixPostfix
     {
         return switch (value)
                 {
-                    case '+' -> true;
-                    case '-' -> true;
-                    case '*' -> true;
-                    case '/' -> true;
-                    case '%' -> true;
-                    case '^' -> true;
+                    case '+', '-', '*', '/', '%', '^' -> true;
                     default -> false;
                 };
     }
@@ -25,21 +20,15 @@ public class InfixPostfix
 
         switch (operator1)
         {
-            case '+' -> op1pre = 1;
-            case '-' -> op1pre = 1;
-            case '*' -> op1pre = 2;
-            case '/' -> op1pre = 2;
-            case '%' -> op1pre = 2;
+            case '+', '-' -> op1pre = 1;
+            case '*', '/', '%' -> op1pre = 2;
             case '^' -> op1pre = 3;
         }
 
         switch (operator2)
         {
-            case '+' -> op2pre = 1;
-            case '-' -> op2pre = 1;
-            case '*' -> op2pre = 2;
-            case '/' -> op2pre = 2;
-            case '%' -> op2pre = 2;
+            case '+', '-' -> op2pre = 1;
+            case '*', '/', '%' -> op2pre = 2;
             case '^' -> op2pre = 3;
         }
         return op1pre >= op2pre;
@@ -70,59 +59,36 @@ public class InfixPostfix
         infix.enqueue(')');
         while (!infix.isEmpty())
         {
-           /*if (infix.queueFront() == '(')
-           {
-               stack.push(infix.queueFront());
-               infix.dequeue();
-           }
-           else if (infix.queueFront() == ')')
-           {
-               while (!stack.isEmpty() && stack.stackTop() != '(')
-                   postfix.enqueue(stack.pop());
-               //stack.pop();
-           }*/
-
-           if (!stack.isEmpty())
-           {
-               char c = infix.dequeue();
-               if (!isOperator(c) && c != '(' && c != ')')
-               {
-                   postfix.enqueue(c);
-               }
-               else if (c == '(')
-               {
-                   stack.push(c);
-               }
-               else if (isOperator(c))
-               {
-                   while (precedence(stack.stackTop(),c))
-                   {
-                       postfix.enqueue(stack.pop());
-                   }
-                   stack.push(c);
-               }
-               else if (c == ')')
-               {
-                   while (stack.stackTop() != '(')
-                   {
-                       postfix.enqueue(stack.pop());
-                   }
-                   /*boolean topop = false;
-                   while (!topop)
-                   {
-                       if (stack.stackTop() != '(')
-                       {
-                           postfix.enqueue(stack.pop());
-                       }
-                       if (stack.stackTop() == '(')
-                       {
-                           topop = true;
-                       }
-                   }*/
-                   stack.pop();
-               }
-           }
-
+            if (!stack.isEmpty())
+            {
+                char c = infix.dequeue();
+                if (/*!isOperator(c) && c != '(' && c != ')' && */ c <= '9' && c >= '1')
+                {
+                    postfix.enqueue(c);
+                }
+                else if (c == '(')
+                {
+                    stack.push(c);
+                }
+                else if (isOperator(c) && !isOperator(infix.queueFront()))
+                {
+                    while (precedence(stack.stackTop(),c))
+                    {
+                        postfix.enqueue(stack.pop());
+                    }
+                    stack.push(c);
+                }
+                else if (c == ')')
+                {
+                    while (stack.stackTop() != '(')
+                    {
+                        postfix.enqueue(stack.pop());
+                    }
+                    stack.pop();
+                }
+                else throw new IllegalArgumentException(expression + " is an Invalid Expression"); // exception handling for double operators and ensuring valid input, i.e. no letters/random symbols
+            }
+            else throw new IllegalArgumentException(expression + " is an Invalid Expression"); // exception handling for uneven number of brackets
         }
 
         //convert postfix queue into string
@@ -132,13 +98,6 @@ public class InfixPostfix
             answer.append(postfix.dequeue());
         }
         System.out.println("The postfix expression is: " + answer);
-
-        //System.out.println("INFIX");
-        //infix.print();
-        //System.out.println("STACK");
-        //stack.print();
-        //System.out.println("POSTFIX");
-        //postfix.print();
     }
 
     public static void main(String[] args)
@@ -148,18 +107,13 @@ public class InfixPostfix
 
         //run program with manual input
         InfixPostfix ip = new InfixPostfix();
-        ip.convertToPostfix("(6+2)*5-8/4");
+        ip.convertToPostfix("(6+2)*5-8/4+3*(9-1)/2^3");
+        ip.convertToPostfix("2-5^5+9*3/1-6+(2*2)/4");
+        ip.convertToPostfix("(9)*8)*7/1/2-4-(2-3)-5^6");
+        ip.convertToPostfix("1+2*9*(4/1+5)//(2-8/3)-6");
 
         //record end time and calculate run time
         long endTime = System.nanoTime();
         System.out.println("Time: " + (endTime - startTime) / 1000000000.0 + " seconds");
     }
-
-
-
-    /*if(ip.isOperator("0") == true)
-            System.out.println("OKOKOK");
-
-    if(ip.precedence("+","*") == false)
-            System.out.println("NONONON");*/
 }

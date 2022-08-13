@@ -43,15 +43,14 @@ public class StackADT
 
     public void push(char data)
     {
-        StackNode newNode = new StackNode(data, root);
-        root = newNode;
+        root = new StackNode(data, root);
         size++;
     }
 
     public char pop()
     {
         char data = '\0';
-        if (!isEmpty());
+        if (!isEmpty())
         {
             //System.out.println("Value popped!");
             data = root.getData();
@@ -97,16 +96,14 @@ public class StackADT
         System.out.println();
     }
 
-    /*public static void main (String[] args)
+    public static void main (String[] args)
     {
         StackADT stk = new StackADT();
-        stk.push("1");
-        stk.push("2");
-        stk.push("3");
+        stk.push('1');
+        stk.push('2');
+        stk.push('3');
         stk.print();
-        stk.stackTop();
         stk.pop();
         stk.print();
-        stk.stackTop();
-    }*/
+    }
 }
